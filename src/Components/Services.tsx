@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { MdOutlineDeveloperMode } from "react-icons/md";
 import { TbDeviceMobileCode } from "react-icons/tb";
 import { FaLaptop } from "react-icons/fa";
@@ -37,7 +37,7 @@ const Services = () => {
                         src='./src/Pictures/web-dev.jpg'
                         alt='Web development'
                         />
-                        <div className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90' />
+                        <div className='absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/90' />
                         <div className='absolute bottom-3 left-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-md border border-[#00DED9]/30'>
                         <MdOutlineDeveloperMode className='text-4xl text-[#00DED9]' />
                         </div>
@@ -62,7 +62,7 @@ const Services = () => {
                     src='./src/Pictures/mob-dev.jpg'
                     alt='Mobile development'
                     />
-                    <div className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90' />
+                    <div className='absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/90' />
                     <div className='absolute bottom-3 left-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-md border border-[#00DED9]/30'>
                     <TbDeviceMobileCode className='text-4xl text-[#00DED9]' />
                     </div>
@@ -83,7 +83,7 @@ const Services = () => {
                     src='./src/Pictures/ui-dev.jpg'
                     alt='UI UX design'
                     />
-                    <div className='absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/90' />
+                    <div className='absolute inset-0 bg-linear-to-b from-transparent via-transparent to-white/90' />
                     <div className='absolute bottom-3 left-1/2 -translate-x-1/2 bg-white rounded-full p-3 shadow-md border border-[#00DED9]/30'>
                     <FaLaptop className='text-4xl text-[#00DED9]' />
                     </div>

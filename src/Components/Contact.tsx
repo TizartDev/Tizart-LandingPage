@@ -1,8 +1,8 @@
-import React from 'react'
+
 import { FaInstagramSquare } from "react-icons/fa";
-import { MdFacebook } from "react-icons/md";
+import { MdFacebook , MdEmail } from "react-icons/md";
 import { IoCall } from "react-icons/io5";
-import { MdEmail } from "react-icons/md";
+
 
 const Contact = () => {
   return (
@@ -25,7 +25,7 @@ const Contact = () => {
                         Instagram
                     </span>
                     <p className='text-gray-400 mt-3 max-w-xl mx-auto'>
-                        <a href="">Tizart-Agency</a>
+                        <a href="#">Tizart-Agency</a>
                     </p>
         </section>
         <section className='flex flex-col items-center gap-4 w-50'>
@@ -36,7 +36,7 @@ const Contact = () => {
                         Facebook
                     </span>
                     <p className='text-gray-400 mt-3 max-w-xl mx-auto'>
-                        <a href="">Tizart-Agency</a>
+                        <a href="#">Tizart-Agency</a>
                     </p>
         </section>
         <section className='flex flex-col items-center gap-4 w-50'>

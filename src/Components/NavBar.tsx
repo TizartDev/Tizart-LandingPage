@@ -1,8 +1,4 @@
 
-import { CiSearch } from "react-icons/ci";
-import { FaDumbbell } from "react-icons/fa";
-import { MdMenu } from "react-icons/md";
-import { PiShoppingCartThin } from "react-icons/pi";
 
 const NavBar = () => {
   return (

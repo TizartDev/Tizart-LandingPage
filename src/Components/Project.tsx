@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 interface ProjectProps {
   title: string
@@ -16,7 +16,7 @@ const Project = ({ title, description, client, year, role, techStack, image }: P
       <div className='grid grid-cols-2 rounded-2xl overflow-hidden shadow-2xl'>
 
         {/* Left - Image */}
-        <section className='bg-gradient-to-br from-[#00DED9] to-[#00303d] p-10 flex justify-center items-center'>
+        <section className='bg-linear-to-br from-[#00DED9] to-[#00303d] p-10 flex justify-center items-center'>
           <img
             className='rounded-2xl w-full object-cover shadow-xl hover:scale-105 transition-transform duration-500'
             src={image}
