@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+  /* background-image: url('./src/Pictures/white-bg.jpg'); */
+  /* background-color: rgb(217, 241, 239); */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
