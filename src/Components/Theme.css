@@ -1,0 +1,96 @@
+/* ============================================================
+   LOCATION: src/Components/theme.css
+   ============================================================ */
+
+/* ── Dark mode (default) ── */
+:root,
+[data-theme="dark"] {
+  --bg-page:           #040f12;
+  --bg-card:           rgba(255,255,255,.025);
+  --bg-card-hover:     rgba(0,222,217,.04);
+
+  --text-primary:      #e8f4f6;
+  --text-secondary:    rgba(232,244,246,.5);
+  --text-muted:        rgba(138,172,179,.8);
+  --text-teal:         #00DED9;
+
+  --border-subtle:     rgba(0,222,217,.1);
+  --border-mid:        rgba(0,222,217,.22);
+  --border-strong:     rgba(0,222,217,.4);
+
+  --grid-line:         rgba(0,222,217,.03);
+
+  --nav-bg:            rgba(4,15,18,.82);
+  --nav-border:        rgba(0,222,217,.1);
+  --nav-link:          rgba(232,244,246,.55);
+  --nav-link-hover:    #e8f4f6;
+  --nav-link-bg-hover: rgba(0,222,217,.06);
+
+  --mobile-menu-bg:    rgba(4,15,18,.96);
+  --mobile-link:       rgba(232,244,246,.7);
+
+  --scrollbar-track:   #040f12;
+  --scrollbar-thumb:   rgba(0,222,217,.2);
+
+  --shadow-card:       0 20px 60px rgba(0,0,0,.5);
+  --shadow-btn:        0 0 28px rgba(0,222,217,.28);
+}
+
+/* ── Light mode ── */
+[data-theme="light"] {
+  --bg-page:           #f2fafa;
+  --bg-card:           #ffffff;
+  --bg-card-hover:     rgba(0,174,170,.05);
+
+  --text-primary:      #0a1f22;
+  --text-secondary:    rgba(10,31,34,.55);
+  --text-muted:        rgba(10,31,34,.42);
+  --text-teal:         #007c7a;
+
+  --border-subtle:     rgba(0,140,138,.18);
+  --border-mid:        rgba(0,140,138,.32);
+  --border-strong:     rgba(0,140,138,.55);
+
+  --grid-line:         rgba(0,140,138,.06);
+
+  --nav-bg:            rgba(242,250,250,.92);
+  --nav-border:        rgba(0,140,138,.15);
+  --nav-link:          rgba(10,31,34,.5);
+  --nav-link-hover:    #0a1f22;
+  --nav-link-bg-hover: rgba(0,140,138,.07);
+
+  --mobile-menu-bg:    rgba(242,250,250,.97);
+  --mobile-link:       rgba(10,31,34,.65);
+
+  --scrollbar-track:   #f2fafa;
+  --scrollbar-thumb:   rgba(0,140,138,.25);
+
+  --shadow-card:       0 8px 32px rgba(0,0,0,.08);
+  --shadow-btn:        0 0 20px rgba(0,140,138,.2);
+}
+
+/* ── Body base ── */
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color .35s ease, color .35s ease;
+}
+
+/* ── Smooth theme transitions ── */
+.tz-nav-wrap, .tz-mobile-menu, .tz-theme-btn,
+.tz-page, .ab-section, .sv-section,
+.pjs-section, .ct-section, .ft-footer {
+  transition:
+    background-color .35s ease,
+    border-color .35s ease,
+    color .35s ease,
+    box-shadow .35s ease !important;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}

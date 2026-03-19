@@ -1,26 +1,286 @@
+import { useEffect, useRef } from "react";
+import { useLang } from "./Languagecontext";
+
 export default function Hero() {
+  const { t, lang } = useLang();
+  const logoRef = useRef<HTMLDivElement>(null);
+  const isRtl = lang === "dz";
+
+  useEffect(() => {
+    const move = (e: MouseEvent) => {
+      if (!logoRef.current) return;
+      const { innerWidth: w, innerHeight: h } = window;
+      const x = (e.clientX / w - 0.5) * 20;
+      const y = (e.clientY / h - 0.5) * 14;
+      logoRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    };
+    window.addEventListener("mousemove", move);
+    return () => window.removeEventListener("mousemove", move);
+  }, []);
+
   return (
-    <section className="flex flex-initial items-center justify-center  min-h-screen gap-30">
-      <div className="p-8 flex flex-col gap-5">
-            <h1 className="text-7xl font-bold text-[#00DED9]">Turn your Idea into Reality!</h1>
-            <h1 className="text-3xl font-medium text-[#00303d]">Tizart a Platform for building Startups</h1>
-        <p className="text-gray-500 text-lg max-w-xl">
-            Tizart Agency is a modern digital agency specialized in web development, 
-            mobile app development, UI/UX design, and AI-powered solutions. 
-            We help startups, businesses, and entrepreneurs transform their ideas into scalable, 
-            high-performance digital products.
-        </p>
-        <div className="flex gap-4">
-            <button className="bg-[#00303d] text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors text-lg">
-            Get Started
-            </button>
-            <button className="bg-[#00DED9] text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors text-lg">
-            View Portfolio
-            </button>
-        </div>
-        
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .tz-page {
+          font-family: 'DM Sans', sans-serif;
+          background: var(--bg-page);
+          color: var(--text-primary);
+          height: 100vh; width: 100%;
+          overflow: hidden; position: relative;
+        }
+        .tz-grid {
+          position: absolute; inset: 0;
+          background-image:
+            linear-gradient(var(--grid-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+          background-size: 60px 60px;
+          pointer-events: none; z-index: 0;
+        }
+        .tz-orb {
+          position: absolute; border-radius: 50%;
+          filter: blur(110px); pointer-events: none; z-index: 0;
+        }
+        .tz-orb-1 {
+          width: 55vw; height: 55vw; max-width: 700px; max-height: 700px;
+          background: radial-gradient(circle, var(--orb-1) 0%, transparent 70%);
+          top: -20vh; right: -12vw;
+          animation: orbDrift 14s ease-in-out infinite alternate;
+        }
+        .tz-orb-2 {
+          width: 40vw; height: 40vw; max-width: 500px; max-height: 500px;
+          background: radial-gradient(circle, var(--orb-2) 0%, transparent 70%);
+          bottom: -10vh; left: -8vw;
+          animation: orbDrift 14s 7s ease-in-out infinite alternate;
+        }
+        .tz-orb-3 {
+          width: 22vw; height: 22vw; max-width: 280px; max-height: 280px;
+          background: radial-gradient(circle, var(--orb-1) 0%, transparent 70%);
+          top: 40%; left: 40%;
+          animation: orbDrift 18s 3s ease-in-out infinite alternate;
+        }
+        @keyframes orbDrift {
+          from { transform: translate(0,0) scale(1); }
+          to   { transform: translate(28px,-28px) scale(1.08); }
+        }
+
+        .tz-hero {
+          position: relative; z-index: 1;
+          padding-top: 84px; height: 100vh;
+          display: flex; align-items: center;
+          padding-left: clamp(24px, 5vw, 80px);
+          padding-right: clamp(24px, 5vw, 80px);
+          padding-bottom: clamp(24px, 3vh, 48px);
+          gap: clamp(32px, 4vw, 72px);
+          overflow: hidden;
+        }
+
+        .tz-left {
+          flex: 1; min-width: 0;
+          display: flex; flex-direction: column; justify-content: center;
+          max-width: 580px;
+        }
+
+        .tz-badge {
+          display: inline-flex; align-items: center; gap: 8px;
+          background: rgba(0,222,217,.08);
+          border: 1px solid var(--border-mid);
+          border-radius: 100px; padding: 5px 14px;
+          font-size: 11px; font-weight: 500; color: var(--text-teal);
+          letter-spacing: .08em; text-transform: uppercase;
+          margin-bottom: clamp(12px, 1.6vh, 22px);
+          width: fit-content; opacity: 0;
+          animation: fadeUp .7s .15s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .badge-dot {
+          width: 6px; height: 6px; background: var(--text-teal); border-radius: 50%;
+          animation: pulseDot 2s ease-in-out infinite;
+        }
+        @keyframes pulseDot {
+          0%,100% { opacity:1; transform:scale(1); }
+          50%      { opacity:.35; transform:scale(.5); }
+        }
+
+        .tz-h1 {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(32px, 4.2vw, 66px); font-weight: 800;
+          line-height: 1.03; letter-spacing: -2px;
+          margin-bottom: clamp(8px, 1.2vh, 14px);
+          color: var(--text-primary);
+          opacity: 0; animation: fadeUp .75s .3s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .tz-teal { color: var(--text-teal); position: relative; display: inline-block; }
+        .tz-teal::after {
+          content: ''; position: absolute; left: 0; bottom: -5px;
+          width: 0; height: 3px;
+          background: linear-gradient(90deg, var(--text-teal) 60%, transparent);
+          border-radius: 2px;
+          animation: lineGrow 1.1s 1s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        @keyframes lineGrow { to { width: 100%; } }
+
+        .tz-sub2 {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(13px, 1.5vw, 19px); font-weight: 700;
+          color: var(--text-teal); letter-spacing: -.2px;
+          margin-bottom: clamp(8px, 1.2vh, 14px);
+          opacity: 0; animation: fadeUp .7s .42s cubic-bezier(.16,1,.3,1) forwards;
+        }
+
+        .tz-desc {
+          font-size: clamp(13px, 1.2vw, 16px); line-height: 1.75;
+          color: var(--text-secondary); max-width: 460px;
+          margin-bottom: clamp(16px, 2.2vh, 32px);
+          opacity: 0; animation: fadeUp .7s .52s cubic-bezier(.16,1,.3,1) forwards;
+        }
+
+        .tz-cta {
+          display: flex; gap: 12px; flex-wrap: wrap;
+          opacity: 0; animation: fadeUp .7s .65s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .btn {
+          padding: clamp(10px,1.2vh,14px) clamp(20px,2vw,28px);
+          border-radius: 10px; font-family: 'DM Sans', sans-serif;
+          font-size: clamp(13px,1vw,15px); font-weight: 500;
+          cursor: pointer; border: none; position: relative; overflow: hidden;
+          transition: transform .15s, box-shadow .22s; white-space: nowrap;
+        }
+        .btn:active { transform: scale(.97); }
+        .btn-primary { background: var(--text-teal); color: #040f12; box-shadow: var(--shadow-btn); }
+        .btn-primary::before {
+          content: ''; position: absolute; inset: 0;
+          background: linear-gradient(135deg, rgba(255,255,255,.2) 0%, transparent 55%);
+          pointer-events: none;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 52px rgba(0,222,217,.52); }
+        .btn-outline {
+          background: transparent; color: var(--text-primary);
+          border: 1px solid var(--border-subtle);
+        }
+        .btn-outline:hover {
+          border-color: var(--border-strong);
+          background: var(--bg-card-hover); transform: translateY(-2px);
+        }
+
+        .tz-stats {
+          display: flex; gap: clamp(16px, 2.5vw, 32px);
+          margin-top: clamp(16px, 2.2vh, 32px);
+          padding-top: clamp(12px, 1.8vh, 22px);
+          border-top: 1px solid var(--border-subtle);
+          opacity: 0; animation: fadeUp .7s .82s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        .stat-val {
+          font-family: 'Syne', sans-serif;
+          font-size: clamp(20px, 2vw, 28px); font-weight: 700;
+          color: var(--text-teal); line-height: 1;
+        }
+        .stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 4px; letter-spacing: .04em; }
+
+        .tz-right {
+          flex: 0 0 clamp(280px, 36vw, 500px);
+          display: flex; align-items: center; justify-content: center;
+          position: relative; overflow: hidden; height: 100%;
+          opacity: 0; animation: fadeLeft 1s .38s cubic-bezier(.16,1,.3,1) forwards;
+        }
+        @keyframes fadeLeft {
+          from { opacity:0; transform:translateX(50px); }
+          to   { opacity:1; transform:translateX(0); }
+        }
+
+        .tz-ring-spin { position: absolute; border-radius: 50%; border: 1px solid var(--border-subtle); pointer-events: none; }
+        .tz-ring-spin-1 { width: clamp(240px,28vw,380px); height: clamp(240px,28vw,380px); animation: spinRing 22s linear infinite; border-top-color: var(--text-teal); }
+        .tz-ring-spin-2 { width: clamp(300px,35vw,480px); height: clamp(300px,35vw,480px); animation: spinRing 32s linear infinite reverse; border-right-color: var(--border-mid); }
+        .tz-ring-spin-3 { width: clamp(180px,21vw,300px); height: clamp(180px,21vw,300px); animation: spinRing 16s linear infinite; border-bottom-color: var(--border-subtle); }
+        @keyframes spinRing { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+
+        .tz-logo-glow {
+          position: absolute; width: clamp(200px,24vw,340px); height: clamp(200px,24vw,340px);
+          border-radius: 50%; background: radial-gradient(circle, rgba(0,222,217,.14) 0%, transparent 70%);
+          animation: glowPulse 4s ease-in-out infinite; pointer-events: none;
+        }
+        @keyframes glowPulse { 0%,100% { transform:scale(1); opacity:.8; } 50% { transform:scale(1.12); opacity:1; } }
+
+        .tz-logo-wrap { perspective: 1000px; position: relative; z-index: 1; }
+        .tz-logo-inner { transition: transform .08s linear; transform-style: preserve-3d; }
+        .tz-logo-img {
+          height: clamp(180px,55vh,400px); width: auto; display: block;
+          filter: drop-shadow(0 0 28px rgba(0,222,217,.55)) drop-shadow(0 0 70px rgba(0,222,217,.18));
+          animation: logoFloat 6s ease-in-out infinite, logoPulse 4s ease-in-out infinite;
+        }
+        @keyframes logoFloat { 0%,100% { transform:translateY(0px); } 50% { transform:translateY(-14px); } }
+        @keyframes logoPulse {
+          0%,100% { filter: drop-shadow(0 0 28px rgba(0,222,217,.55)) drop-shadow(0 0 70px rgba(0,222,217,.18)); }
+          50%      { filter: drop-shadow(0 0 48px rgba(0,222,217,.82)) drop-shadow(0 0 100px rgba(0,222,217,.35)); }
+        }
+
+        @keyframes fadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+
+        @media (max-width: 900px) {
+          .tz-page { height: auto; overflow-x: hidden; }
+          .tz-hero { height: auto; flex-direction: column; padding-top: 100px; padding-left: 24px; padding-right: 24px; padding-bottom: 64px; gap: 40px; }
+          .tz-left { max-width: 100%; }
+          .tz-right { flex: unset; width: 100%; height: 300px; overflow: hidden; }
+          .tz-logo-img { height: clamp(180px,40vw,280px); }
+        }
+      `}</style>
+
+      <div className="tz-page" dir={isRtl ? "rtl" : "ltr"}>
+        <div className="tz-grid" />
+        <div className="tz-orb tz-orb-1" />
+        <div className="tz-orb tz-orb-2" />
+        <div className="tz-orb tz-orb-3" />
+
+        <section className="tz-hero">
+          <div className="tz-left">
+            <div className="tz-badge">
+              <span className="badge-dot" />
+              {t("hero.badge")}
+            </div>
+
+            <h1 className="tz-h1">
+              {t("hero.title1")}<br />
+              {t("hero.title2")}{" "}
+              <span className="tz-teal">{t("hero.teal")}</span>
+            </h1>
+
+            <p className="tz-sub2">{t("hero.sub")}</p>
+            <p className="tz-desc">{t("hero.desc")}</p>
+
+            <div className="tz-cta">
+              <button className="btn btn-primary">{t("hero.cta1")}</button>
+              <button className="btn btn-outline">{t("hero.cta2")}</button>
+            </div>
+
+            <div className="tz-stats">
+              {[
+                { v: t("hero.stat1.val"), l: t("hero.stat1.lbl") },
+                { v: t("hero.stat2.val"), l: t("hero.stat2.lbl") },
+                { v: t("hero.stat3.val"), l: t("hero.stat3.lbl") },
+              ].map((s) => (
+                <div key={s.l}>
+                  <div className="stat-val">{s.v}</div>
+                  <div className="stat-lbl">{s.l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="tz-right">
+            <div className="tz-ring-spin tz-ring-spin-1" />
+            <div className="tz-ring-spin tz-ring-spin-2" />
+            <div className="tz-ring-spin tz-ring-spin-3" />
+            <div className="tz-logo-glow" />
+            <div className="tz-logo-wrap">
+              <div className="tz-logo-inner" ref={logoRef}>
+                <img src="./src/Pictures/Logo.png" className="tz-logo-img" alt="Tizart" />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <img src="./src/Pictures/Logo.png" className="h-120 w-auto" alt="logo" />
-    </section>
+    </>
   );
 }
