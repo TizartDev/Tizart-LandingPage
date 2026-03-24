@@ -182,7 +182,7 @@ export default function Hero() {
         .tz-right {
           flex: 0 0 clamp(280px, 36vw, 500px);
           display: flex; align-items: center; justify-content: center;
-          position: relative; overflow: hidden; height: 100%;
+          position: relative; overflow: visible; height: 100%;
           opacity: 0; animation: fadeLeft 1s .38s cubic-bezier(.16,1,.3,1) forwards;
         }
         @keyframes fadeLeft {
