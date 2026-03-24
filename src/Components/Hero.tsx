@@ -275,7 +275,7 @@ export default function Hero() {
             <div className="tz-logo-glow" />
             <div className="tz-logo-wrap">
               <div className="tz-logo-inner" ref={logoRef}>
-                <img src="./src/Pictures/Logo.png" className="tz-logo-img" alt="Tizart" />
+                <img src="/Pictures/Logo.png" className="tz-logo-img" alt="Tizart" />
               </div>
             </div>
           </div>

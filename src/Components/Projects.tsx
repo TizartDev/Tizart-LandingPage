@@ -34,7 +34,7 @@ const Projects = () => {
       year: "2025",
       role: t("pj.p1.role"),
       techStack: ["React", "Django", "PostgreSQL", "Tailwind"],
-      image: "./src/Pictures/eco-tourism.jpg",
+      image: "/Pictures/eco-tourism.webp",
     },
     {
       title: t("pj.p2.title"),
@@ -43,7 +43,7 @@ const Projects = () => {
       year: "2024",
       role: t("pj.p2.role"),
       techStack: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "./src/Pictures/ecomm.jpg",
+      image: "/Pictures/ecomm.webp",
     },
     {
       title: t("pj.p3.title"),
@@ -52,7 +52,7 @@ const Projects = () => {
       year: "2024",
       role: t("pj.p3.role"),
       techStack: ["React", "OpenAI", "Tailwind", "Firebase"],
-      image: "./src/Pictures/ai-resume.jpg",
+      image: "/Pictures/ai-resume.webp",
     },
   ];
 

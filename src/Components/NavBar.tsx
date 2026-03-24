@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
 import { TbLanguage } from "react-icons/tb";
-import { useTheme } from "./Themecontext";
+import { useTheme } from "./ThemeContext";
 import { useLang } from "./Languagecontext";
 
 const NavBar = () => {
@@ -286,7 +286,7 @@ const NavBar = () => {
 
         {/* Logo */}
         <a href="/" className="tz-nav-logo">
-          <img src="./src/Pictures/tizart.png" alt="Tizart" />
+          <img src="/Pictures/tizart.png" alt="Tizart" />
         </a>
 
         {/* Desktop links */}

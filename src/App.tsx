@@ -1,6 +1,6 @@
 // src/App.tsx
-import "./Components/theme.css";
-import { ThemeProvider } from "./Components/Themecontext";
+import "./Components/Theme.css";
+import { ThemeProvider } from "./Components/ThemeContext";
 import { LangProvider } from "./Components/Languagecontext";
 
 import NavBar   from "./Components/NavBar";

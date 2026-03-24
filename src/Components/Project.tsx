@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiExternalLink, FiGithub, FiUser, FiCalendar, FiBriefcase } from "react-icons/fi";
 import { useLang } from "./Languagecontext";
 

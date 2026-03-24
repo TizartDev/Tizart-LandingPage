@@ -212,7 +212,7 @@ const About = () => {
 
         <div className={`ab-card${visible ? " in" : ""}`}>
           <div className="ab-img-wrap">
-            <img className="ab-img" src="./src/Pictures/business.jpg" alt="Tizart team" />
+            <img className="ab-img" src="/Pictures/business.webp" alt="Tizart team" loading="lazy" />
             <div className="ab-img-label">
               <span className="ab-label-dot" />
               <div>

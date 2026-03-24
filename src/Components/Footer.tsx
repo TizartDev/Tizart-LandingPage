@@ -140,7 +140,7 @@ const Footer = () => {
           <div className="ft-grid">
 
             <div className={`ft-brand${visible ? " in" : ""}`}>
-              <img src="./src/Pictures/tizart.png" className="ft-logo" alt="Tizart" />
+              <img src="/Pictures/tizart.png" className="ft-logo" alt="Tizart" />
               <p className="ft-brand-desc">{t("ft.brand.desc")}</p>
               <div className="ft-socials">
                 {socials.map((s) => (

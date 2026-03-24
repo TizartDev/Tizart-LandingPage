@@ -12,9 +12,9 @@ const serviceIcons = [
   <FaLaptop size={26} />,
 ];
 const serviceImages = [
-  "./src/Pictures/web-dev.jpg",
-  "./src/Pictures/mob-dev.jpg",
-  "./src/Pictures/ui-dev.jpg",
+  "/Pictures/web-dev.webp",
+  "/Pictures/mob-dev.webp",
+  "/Pictures/ui-dev.webp",
 ];
 const serviceIds = ["01", "02", "03"];
 const serviceKeys = ["sv.s1", "sv.s2", "sv.s3"];
@@ -161,7 +161,7 @@ const Services = () => {
                 <img
                   className="sv-img" src={svc.image} alt={svc.title}
                   loading={i === 0 ? "eager" : "lazy"} decoding="async" width={480} height={200}
-                  onLoad={(e) => (e.currentTarget.closest(".sv-img-wrap") as HTMLElement)?.classList.add("loaded")}
+                  onLoad={(e) => (e.currentTarget.closest(".sv-img-wrap") as HTMLElement)?.classList.add("loaded") }
                 />
                 <div className="sv-icon-wrap">{svc.icon}</div>
               </div>
