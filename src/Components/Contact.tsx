@@ -43,7 +43,7 @@ const Contact = () => {
   });
 
   // Formspree hook (replace "YOUR_FORM_ID" with your actual Formspree ID)
-  const [state, handleSubmit] = useForm("mwvwljdk"); // <-- your Formspree ID
+  const [state, handleSubmit] = useForm("xlgojydl"); // <-- your Formspree ID
 
   const channels = [
     {
