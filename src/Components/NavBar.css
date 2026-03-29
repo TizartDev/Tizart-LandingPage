@@ -148,11 +148,14 @@
   box-shadow: 0 0 8px rgba(0, 222, 217, 0.4);
 }
 [data-theme="dark"] .tz-toggle-pill {
-  transform: translateX(0px);
+  transform: translateX(calc(var(--rtl-flip, 0) * 1px));
 }
 [data-theme="light"] .tz-toggle-pill {
-  transform: translateX(26px);
+  transform: translateX(calc(26px - var(--rtl-flip, 0)));
 }
+[dir="rtl"] { --rtl-flip: -26; }
+[dir="ltr"] { --rtl-flip: 26; }
+
 .tz-toggle-track-icon {
   position: absolute;
   right: 6px;

@@ -4,13 +4,13 @@ import "./Components/Theme.css";
 import { ThemeProvider } from "./Components/ThemeContext";
 import { LangProvider } from "./Components/Languagecontext";
 
-import NavBar   from "./Components/NavBar";
-import Hero     from "./Components/Hero";
-import About    from "./Components/About";
+import NavBar from "./Components/NavBar";
+import Hero from "./Components/Hero";
+import About from "./Components/About";
 import Services from "./Components/Services";
 import Projects from "./Components/Projects";
-import Contact  from "./Components/Contact";
-import Footer   from "./Components/Footer";
+import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 
 function App() {
   useEffect(() => {
@@ -31,11 +31,21 @@ function App() {
       <LangProvider>
         <NavBar />
         <main>
-          <Hero />
-          <About />
-          <Services />
-          <Projects />
-          <Contact />
+          <section id="hero">
+            <Hero />
+          </section>
+          <section id="about">
+            <About />
+          </section>
+          <section id="services">
+            <Services />
+          </section>
+          <section id="projects">
+            <Projects />
+          </section>
+          <section id="contact">
+            <Contact />
+          </section>
         </main>
         <Footer />
       </LangProvider>

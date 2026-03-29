@@ -174,7 +174,7 @@
 .ft-body {
   position: relative;
   z-index: 1;
-  padding: 0 72px 60px;
+  padding: 60px 72px 60px;
 }
 
 .ft-grid {

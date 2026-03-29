@@ -1,3 +1,4 @@
+// src/Components/NavBar.tsx
 import { useEffect, useState } from "react";
 import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
 import { TbLanguage } from "react-icons/tb";
@@ -19,6 +20,15 @@ const NavBar = () => {
 
   const isRtl = lang === "dz";
 
+  // Function to handle smooth scrolling
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    setMenuOpen(false); // close mobile menu
+  };
+
   return (
     <>
       <nav className={`tz-nav-wrap${scrolled ? " scrolled" : ""}`}>
@@ -32,10 +42,18 @@ const NavBar = () => {
         <ul className="tz-nav-links" dir={isRtl ? "rtl" : "ltr"}>
           {(["nav.home", "nav.about", "nav.services", "nav.contact"] as const).map((key) => {
             const label = t(key);
-            const href = key === "nav.home" ? "/" : `/${key.split(".")[1]}`;
+            const sectionId = key.split(".")[1]; // home, about, services, contact
             return (
               <li key={key}>
-                <a href={href}>{label}</a>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(sectionId != "home" ? sectionId : "hero");
+                  }}
+                >
+                  {label}
+                </a>
               </li>
             );
           })}
@@ -66,10 +84,7 @@ const NavBar = () => {
             title={lang === "en" ? "تبديل للدارجة" : "Switch to English"}
           >
             <TbLanguage size={15} />
-            <span
-              className={`tz-lang-label${lang === "en" ? "" : " ar"}`}
-              key={lang}
-            >
+            <span className={`tz-lang-label${lang === "en" ? "" : " ar"}`} key={lang}>
               {t("nav.lang")}
             </span>
           </button>
@@ -93,16 +108,22 @@ const NavBar = () => {
       {/* Mobile drawer */}
       <div className={`tz-mobile-menu${menuOpen ? " open" : ""}`} dir={isRtl ? "rtl" : "ltr"}>
         <ul>
-          {(["nav.home", "nav.about", "nav.services", "nav.contact"] as const).map((key) => (
-            <li key={key}>
-              <a
-                href={key === "nav.home" ? "/" : `/${key.split(".")[1]}`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {t(key)}
-              </a>
-            </li>
-          ))}
+          {(["nav.home", "nav.about", "nav.services", "nav.contact"] as const).map((key) => {
+            const sectionId = key.split(".")[1];
+            return (
+              <li key={key}>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(sectionId != "home" ? sectionId : "hero");
+                  }}
+                >
+                  {t(key)}
+                </a>
+              </li>
+            );
+          })}
         </ul>
         <div className="tz-mobile-bottom">
           <button className="tz-mobile-btn">{t("nav.order")}</button>
