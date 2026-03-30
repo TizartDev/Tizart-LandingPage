@@ -63,14 +63,14 @@ const Contact = () => {
     {
       icon: <FaInstagramSquare size={22} />,
       label: "Instagram",
-      value: "@Tizart-Agency",
-      href: "#",
+      value: "@tizartagency",
+      href: "https://www.instagram.com/tizartagency/",
       hint: t("ct.ig.hint"),
     },
     {
       icon: <MdFacebook size={22} />,
       label: "Facebook",
-      value: "Tizart-Agency",
+      value: "TizartAgency",
       href: "https://wwww.facebook.com/TizartAgency/",
       hint: t("ct.fb.hint"),
     },

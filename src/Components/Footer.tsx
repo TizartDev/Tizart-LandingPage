@@ -9,7 +9,7 @@ import { useLang } from "./Languagecontext";
 import "./Footer.css";
 
 const socials = [
-  { icon: <FaInstagram size={15} />, href: "", label: "Instagram" },
+  { icon: <FaInstagram size={15} />, href: "https://www.instagram.com/tizartagency/", label: "Instagram" },
   {
     icon: <CiFacebook size={15} />,
     href: "https://www.facebook.com/TizartAgency/",
